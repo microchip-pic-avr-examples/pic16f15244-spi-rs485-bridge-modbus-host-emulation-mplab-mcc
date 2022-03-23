@@ -14,9 +14,9 @@ This firmware highlights the host functionalities. It demonstrates how to get co
 ## Related Documentation
 
 - [SPI-RS485 Bridge and Modbus Client Implementation using PIC16F15276 Microcontroller](https://github.com/microchip-pic-avr-examples/pic16f15276-cnano-spi-rs485-bridge-modbus-client-mplab-mcc.git)
-- [PIC16F15244 Product Family Page](https://www.microchip.com/en-us/products/microcontrollers-and-microprocessors/8-bit-mcus/pic-mcus/pic16f15244)
-- [PIC16F15244 Family Code Examples on GitHub](https://github.com/microchip-pic-avr-examples?q=pic16f152&type=&language=&sort=)
-- [PIC16F15244 MCU Family Video](https://www.youtube.com/watch?v=nHLv3Th-o-s)
+- [PIC16F152xx Product Family Page](https://www.microchip.com/en-us/products/microcontrollers-and-microprocessors/8-bit-mcus/pic-mcus/pic16f15244)
+- [PIC16F152xx Family Code Examples on GitHub](https://github.com/microchip-pic-avr-examples?q=pic16f152&type=&language=&sort=)
+- [PIC16F152xx MCU Family Video](https://www.youtube.com/watch?v=nHLv3Th-o-s)
 - [PIC16F15244 Datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/PIC16F15213-14-23-24-43-44-Data-Sheet-DS40002195B.pdf)
 
 ## Demo Description 
@@ -90,7 +90,7 @@ Example Frame:
 - MPLAB® X IDE [6.0.0 or newer](http://www.microchip.com/mplab/mplab-x-ide) 
 - MPLAB® XC8 Compiler [2.36.0 or newer](http://www.microchip.com/mplab/compilers) 
 - MPLAB® Data Visualizer [1.3.1136 or newer](https://www.microchip.com/en-us/tools-resources/debug/mplab-data-visualizer)
-- Microchip PIC16F1xxxx Series Device Support [1.9.163 or newer pack](https://packs.download.microchip.com/)
+- Microchip PIC16F1xxxx_DFP Device Support [1.9.163 or newer pack](https://packs.download.microchip.com/)
 - MPLAB® Code Configurator (MCC) [5.1.1 or newer](https://www.microchip.com/mplab/mplab-code-configurator) 
 - TMR0 MCC Melody driver 4.0.8
 - UART MCC Melody driver 1.6.0
