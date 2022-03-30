@@ -7,7 +7,7 @@ The RS485 communication with MODBUS protocol is mostly used over industrial sect
 
 The serial protocol-based clients can be integrated to RS485 based host system using SPI-RS485 bridge.
 
-The PIC16F15244 family of microcontrollers is equipped with Enhanced Universal Synchronous Asynchronous Receiver Transmitter (EUSART), Timers, and MSSP peripherals which can be used in RS485 communication and for implementation of SPI to RS485 Bridge system. 
+The PIC16F152xx family of microcontrollers is equipped with Enhanced Universal Synchronous Asynchronous Receiver Transmitter (EUSART), Timers, and MSSP peripherals which can be used in RS485 communication and for implementation of SPI to RS485 Bridge system. 
 
 This firmware highlights the host functionalities. It demonstrates how to get connect to SPI clients to the RS485 network.
 
