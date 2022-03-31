@@ -105,7 +105,7 @@ Example Frame:
 
 ## Hardware Setup
 
-The PIC16F15244 Curiosity Nano evaluation board with the RS485 2 click is used as host system. The boards are mounted on a Curiosity Nano base for Click boards. The following figure shows hardware setup of the application. Visit [SPI-RS485 Bridge and Modbus Client Implementation using PIC16F15276 Microcontroller](https://github.com/microchip-pic-avr-examples/pic16f15276-cnano-spi-rs485-bridge-modbus-client-mplab-mcc.git) git repository for client hardware setup. 
+The PIC16F15244 Curiosity Nano evaluation board with the [RS485 2 click](https://www.mikroe.com/rs485-2-click) is used as host system. The boards are mounted on a Curiosity Nano base for Click boards. The following figure shows hardware setup of the application. Visit [SPI-RS485 Bridge and Modbus Client Implementation using PIC16F15276 Microcontroller](https://github.com/microchip-pic-avr-examples/pic16f15276-cnano-spi-rs485-bridge-modbus-client-mplab-mcc.git) git repository for client hardware setup. 
 
 Refer hardware connection details table for more information.
 
