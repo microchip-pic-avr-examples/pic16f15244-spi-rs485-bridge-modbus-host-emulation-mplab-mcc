@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.3.0",
         "name": "com.microchip.mcu8.mplabx.project.pic16f15244-spi-rs485-bridge-modbus-host-emulation-mplab-mcc",
-        "version": " ",
+        "version": "1.0.1",
         "displayName": "SPI-RS485 Bridge: Modbus Host Emulation using PIC16F15244 Microcontroller",
         "projectName": "pic16f15244-spi-rs485-bridge-modbus-host-emulation-mplab-mcc",
         "shortDescription": "This example demonstrates how to emulate a Modbus host for communicating with client over RS485 communication and UART peripheral using PIC microcontroller. Compatible PIC16F152xx family of MCUs are PIC16F15214, PIC16F15223, PIC16F15254, PIC16F15276",
