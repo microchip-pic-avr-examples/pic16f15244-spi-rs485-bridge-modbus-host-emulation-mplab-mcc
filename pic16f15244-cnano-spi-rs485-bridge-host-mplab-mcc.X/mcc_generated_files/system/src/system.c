@@ -1,26 +1,17 @@
 /**
-  @Generated CCL Source File
-
-  @Company:
-    Microchip Technology Inc.
-
-  @File Name:
-    system.c
-
-  @Summary:
-    This is the system.c file generated using CCL
-
-  @Description:
-    This header file provides implementations for driver APIs for all modules selected in the GUI.
-    Generation Information :
-        Driver Version    :  2.00
-    The generated drivers are tested against the following:
-        Compiler          :  XC8 v2.31
-        MPLAB             :  MPLAB X 5.45
+ * System Driver Source File
+ * 
+ * @file system.c
+ * 
+ * @ingroup systemdriver
+ * 
+ * @brief This file contains the API implementation for the System Driver.
+ *
+ * @version Driver Version 2.0.2
 */
 
 /*
-© [2022] Microchip Technology Inc. and its subsidiaries.
+© [2023] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -40,9 +31,6 @@
     THIS SOFTWARE.
 */
 
- /**
-   Section: Included Files
- */
 #include "../system.h"
 
 

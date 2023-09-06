@@ -11,7 +11,7 @@
 */
 
 /*
-© [2022] Microchip Technology Inc. and its subsidiaries.
+© [2023] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -60,12 +60,13 @@ const uart_drv_interface_t UART1 = {
     .IsTxDone = &EUSART1_IsTxDone,
     .TransmitEnable = &EUSART1_TransmitEnable,
     .TransmitDisable = &EUSART1_TransmitDisable,
-    .AutoBaudSet = NULL,
-    .AutoBaudQuery = NULL,
-    .BRGSet = NULL,
-    .BRGGet = NULL,
-    .BaudSet = NULL,
-    .BaudGet = NULL,
+    .AutoBaudSet = &EUSART1_AutoBaudSet,
+    .AutoBaudQuery = &EUSART1_AutoBaudQuery,
+    .BRGCountSet = NULL,
+    .BRGCountGet = NULL,
+    .BaudRateSet = NULL,
+    .BaudRateGet = NULL,
+    .AutoBaudEventEnableGet = NULL,
     .ErrorGet = &EUSART1_ErrorGet,
     .TxCompleteCallbackRegister = &EUSART1_TxCompleteCallbackRegister,
     .RxCompleteCallbackRegister = &EUSART1_RxCompleteCallbackRegister,
@@ -79,15 +80,15 @@ const uart_drv_interface_t UART1 = {
 /**
   Section: EUSART1 variables
 */
-static volatile uint8_t eusart1TxHead = 0;
-static volatile uint8_t eusart1TxTail = 0;
-static volatile uint8_t eusart1TxBuffer[EUSART1_TX_BUFFER_SIZE];
+volatile uint8_t eusart1TxHead = 0;
+volatile uint8_t eusart1TxTail = 0;
+volatile uint8_t eusart1TxBuffer[EUSART1_TX_BUFFER_SIZE];
 volatile uint8_t eusart1TxBufferRemaining;
 
-static volatile uint8_t eusart1RxHead = 0;
-static volatile uint8_t eusart1RxTail = 0;
-static volatile uint8_t eusart1RxBuffer[EUSART1_RX_BUFFER_SIZE];
-static volatile eusart1_status_t eusart1RxStatusBuffer[EUSART1_RX_BUFFER_SIZE];
+volatile uint8_t eusart1RxHead = 0;
+volatile uint8_t eusart1RxTail = 0;
+volatile uint8_t eusart1RxBuffer[EUSART1_RX_BUFFER_SIZE];
+volatile eusart1_status_t eusart1RxStatusBuffer[EUSART1_RX_BUFFER_SIZE];
 volatile uint8_t eusart1RxCount;
 
 volatile eusart1_status_t eusart1RxLastError;
@@ -161,14 +162,15 @@ void EUSART1_Deinitialize(void)
 
 inline void EUSART1_Enable(void)
 {
-    RC1STAbits.SREN = 1;
+    RC1STAbits.SPEN = 1;
 
 }
 
 inline void EUSART1_Disable(void)
 {
-    RC1STAbits.SREN = 0;
+    RC1STAbits.SPEN = 0;
 }
+
 
 inline void EUSART1_TransmitEnable(void)
 {
@@ -198,6 +200,33 @@ inline void EUSART1_SendBreakControlEnable(void)
 inline void EUSART1_SendBreakControlDisable(void)
 {
     TX1STAbits.SENDB = 0;
+}
+
+inline void EUSART1_AutoBaudSet(bool enable)
+{
+    if(enable)
+    {
+        BAUD1CONbits.ABDEN = 1;
+    }
+    else
+    {
+       BAUD1CONbits.ABDEN = 0; 
+    }
+}
+
+inline bool EUSART1_AutoBaudQuery(void)
+{
+return (bool)(!BAUD1CONbits.ABDEN);
+}
+
+inline bool EUSART1_IsAutoBaudDetectOverflow(void)
+{
+    return (bool)BAUD1CONbits.ABDOVF; 
+}
+
+inline void EUSART1_AutoBaudDetectOverflowReset(void)
+{
+    BAUD1CONbits.ABDOVF = 0; 
 }
 
 inline void EUSART1_TransmitInterruptEnable(void)
@@ -246,13 +275,14 @@ uint8_t EUSART1_Read(void)
     uint8_t readValue  = 0;
     uint8_t tempRxTail;
     
+    readValue = eusart1RxBuffer[eusart1RxTail];
+
     tempRxTail = (eusart1RxTail + 1) & EUSART1_RX_BUFFER_MASK; // Buffer size of RX should be in the 2^n
     
     eusart1RxTail = tempRxTail;
 
     eusart1RxLastError = eusart1RxStatusBuffer[eusart1RxTail];
     
-    readValue = eusart1RxBuffer[eusart1RxTail];
 
     PIE1bits.RC1IE = 0; 
     if(eusart1RxCount != 0)
@@ -297,8 +327,8 @@ void EUSART1_ReceiveISR(void)
 	} 
     else
     {
+        eusart1RxBuffer[eusart1RxHead] = regValue;
 		eusart1RxHead = tempRxHead;
-		eusart1RxBuffer[tempRxHead] = regValue;
 		eusart1RxCount++;
 	}   
 }
@@ -313,9 +343,9 @@ void EUSART1_Write(uint8_t txData)
     }
     else if(eusart1TxBufferRemaining) // check if at least one byte place is available in TX buffer
     {
+       eusart1TxBuffer[eusart1TxHead] = txData;
        tempTxHead = (eusart1TxHead + 1) & EUSART1_TX_BUFFER_MASK;
        
-       eusart1TxBuffer[tempTxHead] = txData;
        eusart1TxHead = tempTxHead;
        PIE1bits.TX1IE = 0; //Critical value decrement
        eusart1TxBufferRemaining--; // one less byte remaining in TX buffer
@@ -333,10 +363,10 @@ void EUSART1_TransmitISR(void)
     // use this default transmit interrupt handler code
     if(sizeof(eusart1TxBuffer) > eusart1TxBufferRemaining) // check if all data is transmitted
     {
+       TX1REG = eusart1TxBuffer[eusart1TxTail];
        tempTxTail = (eusart1TxTail + 1) & EUSART1_TX_BUFFER_MASK;
        
        eusart1TxTail = tempTxTail;
-       TX1REG = eusart1TxBuffer[tempTxTail];
        eusart1TxBufferRemaining++; // one byte sent, so 1 more byte place is available in TX buffer
     }
     else

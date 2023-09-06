@@ -10,7 +10,7 @@
  * @version UART Driver Version 3.0.0
 */
 /*
-© [2022] Microchip Technology Inc. and its subsidiaries.
+© [2023] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -66,10 +66,11 @@ void (*TransmitEnable)(void);
 void (*TransmitDisable)(void);
 void (*AutoBaudSet)(bool enable);
 bool (*AutoBaudQuery)(void);
-void (*BRGSet)(enum UART_STANDARD_BAUDS baudRate);
-uint32_t (*BRGGet)(void);
-void (*BaudSet)(uint32_t baudRate);
-uint32_t (*BaudGet)(void);
+bool (*AutoBaudEventEnableGet)(void);
+void (*BRGCountSet)(uint32_t brgValue);
+uint32_t (*BRGCountGet)(void);
+void (*BaudRateSet)(uint32_t baudRate);
+uint32_t (*BaudRateGet)(void);
 size_t (*ErrorGet)(void);
 void (*TxCompleteCallbackRegister)(void (*CallbackHandler) (void));
 void (*RxCompleteCallbackRegister)(void (*CallbackHandler) (void));

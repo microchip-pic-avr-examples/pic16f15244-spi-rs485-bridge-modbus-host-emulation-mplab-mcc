@@ -1,26 +1,17 @@
 /**
-  @Generated CCL Source File
-
-  @Company:
-    Microchip Technology Inc.
-
-  @File Name:
-    config_bits.c
-
-  @Summary:
-    This is the config_bits.c file generated using CCL
-
-  @Description:
-    This header file provides implementations for driver APIs for all modules selected in the GUI.
-    Generation Information : 
-        Driver Version    :  2.00
-    The generated drivers are tested against the following:
-        Compiler          :  XC8 v2.31
-        MPLAB             :  MPLAB X 5.45
+ * CONFIGURATION BITS Generated Driver Source File
+ * 
+ * @file config_bits.c
+ * 
+ * @ingroup config_bitsdriver
+ * 
+ * @brief This file contains the API Implementation for the Device Configuration Bits driver.
+ *
+ * @version Driver Version 2.0.1
 */
 
 /*
-© [2022] Microchip Technology Inc. and its subsidiaries.
+© [2023] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -43,7 +34,7 @@
 // Configuration bits: selected in the GUI
 
 //CONFIG1
-#pragma config FEXTOSC = ECH     // External Oscillator Mode Selection bits->EC (external clock) 16 MHz and above
+#pragma config FEXTOSC = OFF     // External Oscillator Mode Selection bits->Oscillator not enabled
 #pragma config RSTOSC = HFINTOSC_32MHZ     // Power-up Default Value for COSC bits->HFINTOSC (32 MHz)
 #pragma config CLKOUTEN = OFF     // Clock Out Enable bit->CLKOUT function is disabled; I/O function on RA4
 #pragma config VDDAR = HI     // VDD Range Analog Calibration Selection bit->Internal analog systems are calibrated for operation between VDD = 2.3V - 5.5V
@@ -70,3 +61,6 @@
 //CONFIG5
 #pragma config CP = OFF     // User Program Flash Memory Code Protection bit->User Program Flash Memory code protection is disabled
 
+/**
+ End of File
+*/

@@ -12,7 +12,7 @@
 */
 
 /*
-© [2022] Microchip Technology Inc. and its subsidiaries.
+© [2023] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -68,7 +68,6 @@
 #define RE_SetOpenDrain()       do { ODCONAbits.ODCA2 = 1; } while(0)
 #define RE_SetAnalogMode()      do { ANSELAbits.ANSA2 = 1; } while(0)
 #define RE_SetDigitalMode()     do { ANSELAbits.ANSA2 = 0; } while(0)
-
 // get/set IO_RC0 aliases
 #define IO_RC0_TRIS                 TRISCbits.TRISC0
 #define IO_RC0_LAT                  LATCbits.LATC0
@@ -88,7 +87,6 @@
 #define IO_RC0_SetOpenDrain()       do { ODCONCbits.ODCC0 = 1; } while(0)
 #define IO_RC0_SetAnalogMode()      do { ANSELCbits.ANSC0 = 1; } while(0)
 #define IO_RC0_SetDigitalMode()     do { ANSELCbits.ANSC0 = 0; } while(0)
-
 // get/set IO_RC1 aliases
 #define IO_RC1_TRIS                 TRISCbits.TRISC1
 #define IO_RC1_LAT                  LATCbits.LATC1
@@ -108,7 +106,6 @@
 #define IO_RC1_SetOpenDrain()       do { ODCONCbits.ODCC1 = 1; } while(0)
 #define IO_RC1_SetAnalogMode()      do { ANSELCbits.ANSC1 = 1; } while(0)
 #define IO_RC1_SetDigitalMode()     do { ANSELCbits.ANSC1 = 0; } while(0)
-
 // get/set IO_RC6 aliases
 #define DE_TRIS                 TRISCbits.TRISC6
 #define DE_LAT                  LATCbits.LATC6
@@ -128,7 +125,6 @@
 #define DE_SetOpenDrain()       do { ODCONCbits.ODCC6 = 1; } while(0)
 #define DE_SetAnalogMode()      do { ANSELCbits.ANSC6 = 1; } while(0)
 #define DE_SetDigitalMode()     do { ANSELCbits.ANSC6 = 0; } while(0)
-
 /**
  * @ingroup  pinsdriver
  * @brief GPIO and peripheral I/O initialization

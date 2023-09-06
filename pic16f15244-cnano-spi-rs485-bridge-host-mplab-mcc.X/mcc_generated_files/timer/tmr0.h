@@ -5,12 +5,12 @@
  * 
  * @defgroup tmr0 TMR0
  * 
- * @brief This file contains API prototypes and other datatypes for the TMR0 module.
+ * @brief This file contains the API prototypes and other data types for the TMR0 driver.
  *
- * @version TMR0 Driver Version 2.0.2
+ * @version TMR0 Driver Version 2.1.0
 */
 /*
-© [2022] Microchip Technology Inc. and its subsidiaries.
+© [2023] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -41,77 +41,77 @@
 /**
  @ingroup tmr0
  @struct TMR_INTERFACE
- @brief This is an instance of TMR_INTERFACE for Timer-0 module
+ @brief Declares an instance of TMR_INTERFACE for the Timer0 module
  */
 extern const struct TMR_INTERFACE Timer0;
 
 /**
  * @ingroup tmr0
- * @brief This API initializes the Timer-0 module.
- *        This routine must be called before any other Timer-0 routines.
- * @param void.
- * @return void.
+ * @brief Initializes the Timer0 module.
+ *        This routine must be called before any other Timer0 routines.
+ * @param None.
+ * @return None.
  */
 void Timer0_Initialize(void);
 
 /**
  * @ingroup tmr0
- * @brief This function starts Timer-0.
- * @pre Timer-0 should be initialized with Timer0_Initialize() before calling this API.
- * @param void.
- * @return void.
+ * @brief Starts Timer0.
+ * @pre Timer0 should be initialized with Timer0_Initialize() before calling this API.
+ * @param None.
+ * @return None.
  */
 void Timer0_Start(void);
 
 /**
  * @ingroup tmr0
- * @brief This function stops Timer-0.
- * @pre Timer-0 should be initialized with Timer0_Initialize() before calling this API.
- * @param void.
- * @return void.
+ * @brief Stops Timer0.
+ * @pre Timer0 should be initialized with Timer0_Initialize() before calling this API.
+ * @param None.
+ * @return None.
  */
 void Timer0_Stop(void);
 
 /**
  * @ingroup tmr0
- * @brief This function reads the 8 bits from TMRTMR0 register.
- * @pre Timer-0 should be initialized with Timer0_Initialize() before calling this API.
- * @param void.
- * @return 8-bit data from TMRTMR0 register.
+ * @brief Reads the 8-bit from the TMR0L register.
+ * @pre Timer0 should be initialized with Timer0_Initialize() before calling this API.
+ * @param None.
+ * @return 8-bit data from the TMR0L register.
  */
 uint8_t Timer0_Read(void);
 
 /**
  * @ingroup tmr0
- * @brief This function writes 8-bit value to TMRTMR0 register.
- * @pre Timer-0 should be initialized with Timer0_Initialize() before calling this API.
- * @param 8-bit value to be written to TMRTMR0 register.
- * @return void.
+ * @brief Writes the 8-bit value to the TMR0L register.
+ * @pre Timer0 should be initialized with Timer0_Initialize() before calling this API.
+ * @param timerVal - 8-bit value to be written to the TMR0L register.
+ * @return None.
  */
-void Timer0_Write(size_t timerVal);
+void Timer0_Write(uint8_t timerVal);
 
 /**
  * @ingroup tmr0
- * @brief This function loads 8 bit value to TMRTMR0H register.
- * @pre Timer-0 should be initialized with Timer0_Initialize() before calling this API.
- * @param 8-bit value to be written to TMRTMR0H register.
- * @return void.
+ * @brief Loads the 8-bit value to the TMR0H register.
+ * @pre Timer0 should be initialized with Timer0_Initialize() before calling this API.
+ * @param periodVal - 8-bit value written to the TMR0H register.
+ * @return None.
  */
-void Timer0_Reload(uint8_t periodVal);
+void Timer0_Reload(size_t periodVal);
 
 /**
  * @ingroup tmr0
- * @brief Interrupt Service Routine for Timer-0 overflow interrupt.
- * @param void
- * @return void
+ * @brief Interrupt Service Routine (ISR) for Timer0 overflow interrupt.
+ * @param None.
+ * @return None.
  */
 void Timer0_OverflowISR(void);
 
 /**
  * @ingroup tmr0
- * @brief Setter function for Timer-0 overflow Callback.
- * @param CallbackHandler - Pointer to custom Callback.
- * @return void
+ * @brief Setter function for Timer0 overflow callback.
+ * @param CallbackHandler - Pointer to the custom callback.
+ * @return None.
  */
  void Timer0_OverflowCallbackRegister(void (* CallbackHandler)(void));
 
