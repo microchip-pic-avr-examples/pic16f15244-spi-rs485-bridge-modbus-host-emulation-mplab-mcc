@@ -1,13 +1,13 @@
 <!-- Please do not change this html logo with link -->
 <a href="https://www.microchip.com" rel="nofollow"><img src="images/microchip.png" alt="MCHP" width="300"/></a>
 
-# SPI-RS485 Bridge: Modbus Host Emulation using PIC16F15244 Microcontroller
+# SPI-RS485 Bridge: Modbus Host Emulation Using PIC16F15244 Microcontroller
 
-The RS485 communication with Modbus protocol is mostly used in the industrial sector for its highlighting features, such as balanced line communication, multi-drop facility, good noise immunity and maximum data transmission speed. The Modbus protocol with RS485 physical line makes multi-client transactions easy and error free.
+The RS485 communication with Modbus protocol is mostly used in the industrial sector for its main functions, such as balanced line communication, multi-drop facility, good noise immunity and maximum data transmission speed. The Modbus protocol with RS485 physical line makes multi-client transactions easy and error free.
 
 The serial protocol-based clients can be integrated to an RS485 based host system using an SPI-RS485 bridge.
 
-The PIC16F152xx family of microcontrollers (MCUs) is equipped with the Enhanced Universal Synchronous Asynchronous Receiver Transmitter (EUSART), Timers and MSSP peripherals which can be used in RS485 communication and for Serial Peripheral Interface (SPI) implementation to the RS485 bridge system.
+The PIC16F152xx family of microcontrollers (MCUs) is uses the Enhanced Universal Synchronous Asynchronous Receiver Transmitter (EUSART), Timers and MSSP peripherals, which can be used in RS485 communication and for Serial Peripheral Interface (SPI) implementation to the RS485 bridge system.
 
 This code example highlights the host functionalities. It demonstrates how to get connect to SPI clients to the RS485 network.
 
@@ -25,7 +25,7 @@ The SPI-RS485 bridge example aims to integrate serial protocol (SPI) clients to 
 
 This demonstration uses host and client systems. The host sends Modbus RTU query frames to the client to ask for the sensor data. The client receives the Modbus frames and responds to the host with the sensor data, if the received frame is valid.
 
-The host system periodically (every 10s) creates the Modbus RTU frame with the client address, function code and address of the desired data, appending the 2-byte Cyclic Redundancy Check (CRC) to the frame and sending the Modbus query frame for reading the client holding registers.
+Every 10 seconds, the host system creates the Modbus RTU frame with the client address, function code, and address of the desired data. Therefore, it adds the 2-byte Cyclic Redundancy Check (CRC) to the frame and sending the Modbus query frame for reading the client holding registers.
 
 The PIC16F15244 microcontroller serves as the host and is connected to the RS485 2 click via EUSART. It is used to convert EUSART TTL signals to RS485 standard signals, enabling communication with the RS485 bus network.
 
@@ -44,9 +44,9 @@ The figure below shows the SPI-RS485 bridge demo block diagram.
 
 ## Modbus Introduction
 
-Modbus is a serial communication protocol developed for usage with Programmable Logic Controllers (PLCs), as a method of transmitting information over serial lines between electronic devices. The device requesting the information is called the Modbus host and the devices supplying information are Modbus clients.
+Modbus is a serial communication protocol used with Programmable Logic Controllers (PLCs) as a method of transmitting information over serial lines between electronic devices. The device requesting the information is called the Modbus host, and the devices supplying information are Modbus clients.
 
-In a standard Modbus network, there is one host and up to 247 clients, each with a unique client address from 1 to 247. The host can also write information to the clients. The host Modbus frame includes the client address, function code, memory address, length of the expected data and CRC.
+In a standard Modbus network, there is one host and up to 247 clients, each with a unique client address from 1 to 247. The host can write information to the clients. The host Modbus frame includes the client address, function code, memory address, length of the expected data, and CRC.
 
 ### Sample Data Frame
 
@@ -148,17 +148,17 @@ Visit the [SPI-RS485 Bridge and Modbus Client Implementation using PIC16F15276 M
 
 ## Demo Operation
 
-1.	Connect the hardware and prepare the demonstrator setup. Follow the steps in *Hardware Setup* section for hardware setup.
-2.  Configure the Data Visualizer for viewing the custom dashboard window. Follow the instructions provided in the *Data Visualizer Configuration section*.
+1.	Connect the hardware and prepare the demonstrator setup. Follow the steps in **Hardware Setup** section for hardware setup.
+2.  Configure the Data Visualizer for viewing the custom dashboard window. Follow the instructions provided in the **Data Visualizer Configuration section**.
 3.	Click the **Serial Port Control Panel Connect** button.
-4.	Observe the “Host Modbus RTU Frame No” field, on the first row of the custom board, to understand which frame is sent from host to client.
+4.	Observe the **Host Modbus RTU Frame No** field, on the first row of the custom board, to understand which frame is sent from host to client.
 
 <p align="center">
   <img width=auto height=auto src="images/DVCstmbrdFrames.jpg">
   <br>Figure 3. Frame Type Field in Data Visualizer Custom Dashboard window<br>
 </p>
 
-5.	Observe the “Host Modbus RTU Frame” and “Response Modbus RTU Frame” fields to understand the host query frame and client response frame.
+5.	Observe the **Host Modbus RTU Frame** and **Response Modbus RTU Frame** fields to understand the host query frame and client response frame.
 
 <p align="center">
   <img width=auto height=auto src="images/DVCstmbrdRTUFrames.jpg">
